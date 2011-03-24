@@ -2,18 +2,18 @@
 
 # see http://www.sourceweaver.com/posts/python-namespace-packages
 try:
-	from setuptools import setup, Extension, find_packages
+	from setuptools import setup, find_packages
 except ImportError:
 	from ez_setup import use_setuptools
 	use_setuptools()
-	from setuptools import setup, Extension, find_packages
+	from setuptools import setup, find_packages
 
 setup(
-	name = "MultipleTesting",
+	name = "pAdjust",
 	version = "1.0",
 	description = "P-values correction for multiple testing",
 	long_description = open("README.rst").read(),
-	url = "http://github.com/ajmazurie/xstats.mtesting",
+	url = "http://github.com/ajmazurie/xstats.padjust",
 	license = open("LICENSE.txt").read(),
 
 	author = "Aurelien Mazurie",

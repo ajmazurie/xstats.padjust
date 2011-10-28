@@ -1,10 +1,12 @@
 # Correct p-values for mutiple testing
 # Equivalent in R: p.adjust ('stats' package)
 
-# Correct a list of p-values using the Bonferroni adjustment
-# Return a list of corrected p-values; null values are ignored.
-# cf. http://en.wikipedia.org/wiki/Bonferroni_correction
 def bonferroni_adjustment (p_values):
+	""" Correct a list of p-values using the Bonferroni adjustment
+
+		Return a list of corrected p-values; null values are ignored.
+		cf. http://en.wikipedia.org/wiki/Bonferroni_correction
+	"""
 	n = len(filter(lambda x: x != None, p_values)) + 0.0
 
 	adjusted_p_values = []
@@ -16,10 +18,12 @@ def bonferroni_adjustment (p_values):
 
 	return adjusted_p_values
 
-# Correct a list of p-values using the Holm-Bonferroni adjustment
-# Return a list of corrected p-values; null values are ignored.
-# cf. http://en.wikipedia.org/wiki/Holm-Bonferroni_method
 def holm_adjustment (p_values):
+	""" Correct a list of p-values using the Holm-Bonferroni adjustment
+
+		Return a list of corrected p-values; null values are ignored.
+		cf. http://en.wikipedia.org/wiki/Holm-Bonferroni_method
+	"""
 	# multiply p-values by a corrective factor, ignoring null entries
 	n, c = len(filter(lambda x: x != None, p_values)), 0
 	m = []
@@ -43,14 +47,16 @@ def holm_adjustment (p_values):
 
 	return adjusted_p_values
 
-# Given a list of p-values, produce a ranked list of increasing q-values.
-# A q-value in position k represents the false discovery rate, or expected
-# proportion of false positives in the k first hypotheses.
-# Assumes that the tests are independent or positively correlated.
-#
-# Uses the Benjamini-Hochberg algorithm
-# cf. http://en.wikipedia.org/wiki/False_discovery_rate
 def fdr (p_values, produce_ranking = False):
+	""" Given a list of p-values, produce a ranked list of increasing q-values.
+
+		A q-value in position k represents the false discovery rate, or expected
+		proportion of false positives in the k first hypotheses.
+		Assumes that the tests are independent or positively correlated.
+
+		Uses the Benjamini-Hochberg algorithm
+		cf. http://en.wikipedia.org/wiki/False_discovery_rate
+	"""
 	# multiply p-values by a corrective factor, ignoring null entries
 	n, c = len(filter(lambda x: x != None, p_values)), 0
 	m = []

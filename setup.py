@@ -9,7 +9,7 @@ except ImportError:
 	from setuptools import setup, find_packages
 
 setup(
-	name = "pAdjust",
+	name = "xstats.padjust",
 	version = "1.0",
 	description = "P-values correction for multiple testing",
 	long_description = open("README.rst").read(),
